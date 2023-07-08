@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--[3] ELECCIÓN DE LA VERSIÓN DE DINAMIC WEB MODULE Y CONFIGURACIÓN 
+
+    Para obtener un ejemplo del esquema de validación en la cabecera de un fichero web.xml, puede consultarlo en internet o en las siguientes url:
+
+	https://cloud.google.com/appengine/docs/legacy/standard/java/config/webxml
+	https://www.w3schools.blog/deployment-descriptor-web-xml-file
+	
+	En este ejemplo se hace referencia a la versión de esquema 4.0. Debes tener en cuenta que la versión indicada debería estar alineada con
+	la versión del Dinamyc Web Module (La faceta base del tipo de proyecto web en JAVA EE). Para comprobarlo, haga click derecho sobre el proyecto 
+	y luego en Properties -> Project Facets y ajustar la versión de Dinamic Web Module.
+	
+	Debe tener en cuenta que la versión de Dinamic Web Module está extrechamente relacionada con la compatibilidad con el servidor de aplicaciones (en nuestro
+	caso TomCat). En la siguiente url dispone de una relación de compatibilidades de las diferentes versiones de Apache TomCat con la versión de Dinamic Web Module.
+	
+	https://tomcat.apache.org/whichversion.html
+	
+	Nota: La columna "Servlet Spec" hace referencia a la versión de Dinamic web Module soportada, "Apache Tomcat Version" a la versión de servidor y "Supported Java Versions"
+	a la versión del JDK.
+ -->
+ 
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+	id="WebApp_ID" version="4.0">
+	
+  <display-name>Archetype Created Web Application</display-name>
+  
+ 
+  
+    	<!-- [4] CONFIGURACIÓN DEL SERVLET DE SPRING QUE DARA RESPUESTA A LAS PETICIONES DEL CILENTE
+    	
+    	    La base de JAVA EE se sustenta en los servlets. Esta tecnología es la base del desarrollo web en JAVA. Todos los frameworks de desarrollo web (en java) se
+    	    sustenta o tienen como punto de partida los servlet y realizan su propia especificación que aportan facilidades pero que requieren de esta base tecnológica.
+    	    
+    	    A continuación, lo que se configura y se indica en esta región, es la referencia al servlet del framwework de Spring que atenderá las peticiones del cliente, esto
+    	    es: org.springframework.web.servlet.DispatcherServlet
+    	    
+	  	    Además, se hace referencia al contenedor de configuración de spring web MVC que está contenido en el fichero session-context.xml. El nombre de este fichero puede ser modificado,
+	  	    siempre y cuando coincida el nombre que figura en esta configuración con el fichero alojado.
+	  	    
+	  	    En url-pattern se indica la ruta relativa desde la que se atenderán las peticiones del cliente. En este caso, la raíz de la aplicación.
+	  	    
+	  	    Para más información y ejemplos:
+	  	    
+	  	    https://docs.spring.io/spring-framework/docs/current/reference/html/web.html#spring-web
+	  	    
+  	   -->
+	<servlet>
+		<servlet-name>dispatcher</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>/WEB-INF/session-context.xml</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<!-- Ubicación URL del servlet -->
+	<servlet-mapping>
+		<servlet-name>dispatcher</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+	
+</web-app>

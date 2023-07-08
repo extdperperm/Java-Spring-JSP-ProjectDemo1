@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>es.dsw</groupId>
+  <artifactId>SpringProyectDemo1</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>war</packaging>
+
+  <name>SpringProyectDemo1 Maven Webapp</name>
+  <!-- FIXME change it to the project's website -->
+  <url>http://www.example.com</url>
+
+<!-- [1] ELECCIÓN DE LA VERSIÓN DEL JDK
+   
+     Este proyecto hace referencia a la versión 17 del OpenJdk. Si desea hacer referencia a otra versión, debe cambiar el valor 17 por la versión correspondiente.
+     Es importante que tengas en cuenta que eclipse debe conocer donde esta alojado los binarios del JDK. Para ello, puede comprobarlo en Windows -> Preferences ->
+     Java -> Installed JREs. Si no figura debe añadirla, de lo contrario el proyecto indicará error.
+     
+     Recuerde forzar un Maven Update tras cada modificación de este fichero.
+     
+     Nota: Es recomendable que se asegure que las dependencias de Maven (Maven Dependencies) está añadidas al Build Path. Para ello y verificarlo, haga click derecho
+     sobre el proyecto -> Properties -> Java Build Path -> Order an Export y verifique que está chekeado el parámetro Maven Dependencies y aplique los cambios.
+     
+ -->
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>17</maven.compiler.source>
+    <maven.compiler.target>17</maven.compiler.target>
+  </properties>
+
+<!-- [2] CONFIGURACIÓN DE LAS DEPENDENCIAS DEL PROYECTO
+   
+     Para este proyecto, se añaden los dependencias. Por un lado javax.servlet, que es la base tecnológica de JAVA EE en cuanto a los servlet que atienden peticiones
+     del protocolo http.
+     
+     Y se añade la dependencia de spring-webmvc.
+ -->
+ 
+  <dependencies>
+	<!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
+	<dependency>
+	    <groupId>javax.servlet</groupId>
+	    <artifactId>javax.servlet-api</artifactId>
+	    <version>4.0.1</version>
+	    <scope>provided</scope>
+	</dependency>
+
+
+	<!-- https://mvnrepository.com/artifact/org.springframework/spring-webmvc -->
+	<dependency>
+	    <groupId>org.springframework</groupId>
+	    <artifactId>spring-webmvc</artifactId>
+	    <version>5.3.22</version>
+	</dependency>
+  </dependencies>
+
+  <build>
+    <finalName>SpringProyectDemo1</finalName>
+    <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
+      <plugins>
+        <plugin>
+          <artifactId>maven-clean-plugin</artifactId>
+          <version>3.1.0</version>
+        </plugin>
+        <!-- see http://maven.apache.org/ref/current/maven-core/default-bindings.html#Plugin_bindings_for_war_packaging -->
+        <plugin>
+          <artifactId>maven-resources-plugin</artifactId>
+          <version>3.0.2</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>3.8.0</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-surefire-plugin</artifactId>
+          <version>2.22.1</version>
+        </plugin>
+        <plugin> 
+          <artifactId>maven-war-plugin</artifactId>
+          <version>3.2.2</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-install-plugin</artifactId>
+          <version>2.5.2</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-deploy-plugin</artifactId>
+          <version>2.8.2</version>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
+</project>

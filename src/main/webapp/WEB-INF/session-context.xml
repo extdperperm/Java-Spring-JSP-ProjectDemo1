@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- [5] CONFIGURACIÓN DE DispatcherServlet DE SPRING
+
+	En este contenedor de spring se especificará la configuración especifica del servlet para MVC Spring que atenderá las peticiones. Para más información y ejemplos de donde
+	obtener esta cabecera de configuración, puede consultarlo en:
+	
+	https://docs.spring.io/spring-framework/docs/current/reference/html/web.html#mvc-config
+ 
+ -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans
+    	http://www.springframework.org/schema/beans/spring-beans.xsd
+    	http://www.springframework.org/schema/context
+    	http://www.springframework.org/schema/context/spring-context.xsd
+    	http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+	<!--  Paquete a escanear en busca de componentes controllers. Aquí debe hacer referencia en que paquete alojará las controladoras. Puede indicar
+	      más de un paquete añadiendo nuevas líenas context:component-scan. Es importante indicar donde MVC Spring debe escanear el código para conocer
+	      donde se alojan las controladoras bajo la notación @Controller.-->
+	<context:component-scan base-package="es.dsw.controllers" />
+
+    <!-- Esta etiqueta hace referencia a que se usará en las controladoras los componentes básicos y estandar de spring para la captura de eventos y tratamiento
+         de las peticiones: @Controller, @PostMapping, @GetMapping, @PutMapping, etc, @RequestMapping, etc.-->
+	<mvc:annotation-driven/>
+	
+	<!-- En spring por defecto los recursos estáticos que tengamos bajo la carpeta webapp no son accesibles
+		 por el cliente. Por eso se debe indicar de forma explícita los directorios accesibles. Debetenerlo muy en cuenta.
+		 
+		 En el siguiente ejemplo en el atributo mapping se indica las rutas relativas desde el cliente que se
+		 mapearán y en location se indica realmente a cual se corresponde de nuestro proyecto (tomando como raiz webapp). Es decir, al igual que
+		 ocurre con el mapeo de las controladoras, podría interesarnos que el mapeo fuera diferente a la ruta real, la cual
+		 esta última por temas de seguridad podría interesarnos ocultar.
+		 
+		 El doble ** indica que se permite el acceso de forma recursiva también a todo el contenido y directorios que cuelguen
+		 de la ruta indicada.
+	 -->
+	<mvc:resources mapping="/styles/**" location="/styles/" />
+	<mvc:resources mapping="/img/**" location="/img/" />
+
+	<!-- Configuración del view resolver. Aquí se indica que tecnología y ubicación se usará para renderizar las vistas. En este proyecto se ha tomado como tecnología de
+	     renderización los .jsp. También se puede utilizar otras tecnologías de resolución de vistas como por ejemplo la basada en .html basada en Thymeleaf. Para que tengas una visión
+	     de las tecnologías disponibles visita la siguiente documentación:
+	     
+	     https://docs.spring.io/spring-framework/docs/current/reference/html/web.html#mvc-view
+	     
+	     En este proyecto se indica que las vistas estarán alojadas bajo la ruta /WEB-INF/views con la ventaja de que estas no podrán ser accesibles al cliente de forma directa. Y la
+	     extensión es .jsp (por lo que desde las controladoras no se deberá especificar la extensión).
+	-->
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/views/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+
+</beans>
