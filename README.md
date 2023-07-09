@@ -10,6 +10,7 @@ DESCRIPCIÓN
 Ejemplo de creación de un proyecto web con maven en el contexto de Spring. Ejemplo de uso de controladoras, mapeos de
 rutas, modelo de spring, etc.
 
+Nota: Si se desea ejecutar con una versión de ApacheTomcat superior al 9, es necesario sustituir la dependencia javax por jakarta y actualizar en el web.xml la versión de la faceta (4.0 o superior)
 ----------------------------------------------------------------------------------------------------------------------
 ESPECIFICACIÓN TÉCNICA DE DESARROLLO UTILIZADO
 ----------------------------------------------------------------------------------------------------------------------
