@@ -10,7 +10,7 @@ DESCRIPCIÓN
 Ejemplo de creación de un proyecto web con maven en el contexto de Spring. Ejemplo de uso de controladoras, mapeos de
 rutas, modelo de spring, etc.
 
-La versión de org.springframework.web.servlet.DispatcherServlet (ver web.xml) es incompatible con jakarta.servlet.Servlet. Por lo que para ejecutar este proyecto debe hacerlo con Apache TomCat 9 dado que Apache TomCat 10 implementa la nueva estructura JakartaEE. 
+Nota: La versión de org.springframework.web.servlet.DispatcherServlet (ver web.xml) es incompatible con jakarta.servlet.Servlet. Por lo que para ejecutar este proyecto debe hacerlo con Apache TomCat 9 dado que Apache TomCat 10 implementa la nueva estructura JakartaEE. 
 
 Si deseas crear aplicaciones web con Spring sobre Apache TomCat 10 es mejor que utilices spring boot. (Localiza mis repositorios sobre aplicaciones web con Spring Boot 3).
 
